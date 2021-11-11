@@ -14,16 +14,17 @@ namespace GildedTros.App
         {
             foreach (var item in Items)
             {
+                if (item.Name == "B-DAWG Keychain")
+                    continue;
+
                 if (item.Name != "Good Wine" 
                     && item.Name != "Backstage passes for Re:factor"
                     && item.Name != "Backstage passes for HAXX")
                 {
                     if (item.Quality > 0)
                     {
-                        if (item.Name != "B-DAWG Keychain")
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
+
+                        item.Quality = item.Quality - 1;
                     }
                 }
                 else
@@ -54,10 +55,7 @@ namespace GildedTros.App
                     }
                 }
 
-                if (item.Name != "B-DAWG Keychain")
-                {
-                    item.SellIn = item.SellIn - 1;
-                }
+                item.SellIn = item.SellIn - 1;
 
                 if (item.SellIn < 0)
                 {
@@ -68,10 +66,7 @@ namespace GildedTros.App
                         {
                             if (item.Quality > 0)
                             {
-                                if (item.Name != "B-DAWG Keychain")
-                                {
-                                    item.Quality = item.Quality - 1;
-                                }
+                                item.Quality = item.Quality - 1;
                             }
                         }
                         else
@@ -89,5 +84,6 @@ namespace GildedTros.App
                 }
             }
         }
+
     }
 }
