@@ -157,7 +157,7 @@ namespace GildedTros.App
         }
 
         [Fact]
-        //Backstage pass quality increases by 3 when sellin below 10
+        //Backstage pass quality increases by 3 when sellin 5
         public void BackstageQualitySellin5()
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes for Re:factor", SellIn = 5, Quality = 20 } };
@@ -167,7 +167,7 @@ namespace GildedTros.App
         }
 
         [Fact]
-        //Backstage pass quality increases by 3 when sellin below 10
+        //Backstage pass quality increases by 3 when sellin below 5
         public void BackstageQualitySellinBelow5()
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes for Re:factor", SellIn = 1, Quality = 20 } };
@@ -188,7 +188,7 @@ namespace GildedTros.App
 
         [Fact]
         //Backstage pass quality drops to 0 when sellin negative
-        public void BackstageQualitySellinMegative()
+        public void BackstageQualitySellinNegative()
         {
             IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes for Re:factor", SellIn = -1, Quality = 20 } };
             GildedTros app = new GildedTros(Items);
