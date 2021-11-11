@@ -21,16 +21,10 @@ namespace GildedTros.App
                     && item.Name != "Backstage passes for Re:factor"
                     && item.Name != "Backstage passes for HAXX")
                 {
-                    if (item.Quality > 0)
-                    {
-
-                        item.Quality = item.Quality - 1;
-                    }
+                    item.Quality = item.Quality - 1;
                 }
                 else
                 {
-                    if (item.Quality < 50)
-                    {
                         item.Quality = item.Quality + 1;
 
                         if (item.Name == "Backstage passes for Re:factor"
@@ -38,21 +32,14 @@ namespace GildedTros.App
                         {
                             if (item.SellIn < 11)
                             {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
+                                item.Quality = item.Quality + 1;
                             }
 
                             if (item.SellIn < 6)
                             {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
+                                item.Quality = item.Quality + 1;
                             }
                         }
-                    }
                 }
 
                 item.SellIn = item.SellIn - 1;
@@ -64,10 +51,7 @@ namespace GildedTros.App
                         if (item.Name != "Backstage passes for Re:factor"
                             && item.Name != "Backstage passes for HAXX")
                         {
-                            if (item.Quality > 0)
-                            {
-                                item.Quality = item.Quality - 1;
-                            }
+                            item.Quality = item.Quality - 1;
                         }
                         else
                         {
@@ -76,12 +60,23 @@ namespace GildedTros.App
                     }
                     else
                     {
-                        if (item.Quality < 50)
-                        {
                             item.Quality = item.Quality + 1;
-                        }
                     }
                 }
+
+                ClampQuality(item);
+            }
+        }
+
+        private void ClampQuality(Item item)
+        {
+            if (item.Quality > 50)
+            {
+                item.Quality = 50;
+            }
+            else if (item.Quality < 0)
+            {
+                item.Quality = 0;
             }
         }
 
