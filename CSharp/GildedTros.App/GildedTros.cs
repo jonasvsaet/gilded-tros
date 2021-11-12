@@ -22,19 +22,34 @@ namespace GildedTros.App
                     && item.Name != "Backstage passes for Re:factor"
                     && item.Name != "Backstage passes for HAXX")
                 {
-                    if(item.SellIn <= 0)
+                    //Smelly items
+                    if(item.Name == "Duplicate Code" || item.Name == "Long Methods" || item.Name == "Ugly Variable Names")
                     {
-                        item.Quality -= 2;
+                        if (item.SellIn <= 0)
+                        {
+                            item.Quality -= 4;
+                        }
+                        else
+                        {
+                            item.Quality -= 2;
+                        }
                     }
                     else
                     {
-                        item.Quality--;
+                        if (item.SellIn <= 0)
+                        {
+                            item.Quality -= 2;
+                        }
+                        else
+                        {
+                            item.Quality--;
+                        }
                     }
-
                 }
                 //Increasers
                 else
                 {
+                    //Backstage passes
                     if (item.Name == "Backstage passes for Re:factor"
                     || item.Name == "Backstage passes for HAXX")
                     {
@@ -55,6 +70,7 @@ namespace GildedTros.App
                             item.Quality++;
                         }
                     }
+                    //Good wine
                     else
                     {
                         if(item.SellIn <= 0)
