@@ -8,6 +8,14 @@ namespace GildedTros.App
 {
     public interface IInnItem 
     {
+        public int MaxQuality { get; }
+        public int MinQuality { get; }
+        
+        public bool SellInDecreases { get; }
+
+        Item Item { get; set; }
+
         void UpdateItem();
+
     }
 }

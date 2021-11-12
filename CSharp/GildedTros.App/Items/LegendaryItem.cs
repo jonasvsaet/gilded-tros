@@ -8,16 +8,21 @@ namespace GildedTros.App.Items
 {
     public class LegendaryItem : IInnItem
     {
-        public Item item;
+        public int MaxQuality => 80;
+        public int MinQuality => 0;
+
+        public bool SellInDecreases => false;
+
+        public Item Item { get; set; }
 
         public LegendaryItem(Item item)
         {
-            this.item = item;
+            Item = item;
         }
 
         public void UpdateItem()
         {
-            item.Quality = 80;
+            Item.Quality = 80;
         }
     }
 }

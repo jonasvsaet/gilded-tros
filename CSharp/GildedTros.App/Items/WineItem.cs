@@ -8,22 +8,27 @@ namespace GildedTros.App.Items
 {
     public class WineItem : IInnItem
     {
-        public Item item;
+        public int MaxQuality => 50;
+        public int MinQuality => 0;
+
+        public bool SellInDecreases => true;
+
+        public Item Item { get; set; }
 
         public WineItem(Item item)
         {
-            this.item = item;
+            Item = item;
         }
 
         public void UpdateItem()
         {
-            if (item.SellIn <= 0)
+            if (Item.SellIn <= 0)
             {
-                item.Quality += 2;
+                Item.Quality += 2;
             }
             else
             {
-                item.Quality++;
+                Item.Quality++;
             }
         }
     }

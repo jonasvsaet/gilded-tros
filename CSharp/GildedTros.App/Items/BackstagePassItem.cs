@@ -8,30 +8,35 @@ namespace GildedTros.App.Items
 {
     public class BackstagePassItem : IInnItem
     {
-        public Item item;
+        public int MaxQuality => 50;
+        public int MinQuality => 0;
+
+        public bool SellInDecreases => true;
+
+        public Item Item { get; set; }
 
         public BackstagePassItem(Item item)
         {
-            this.item = item;
+            Item = item;
         }
 
         public void UpdateItem()
         {
-            if (item.SellIn <= 0)
+            if (Item.SellIn <= 0)
             {
-                item.Quality = 0;
+                Item.Quality = 0;
             }
-            else if (item.SellIn <= 5)
+            else if (Item.SellIn <= 5)
             {
-                item.Quality += 3;
+                Item.Quality += 3;
             }
-            else if (item.SellIn <= 10)
+            else if (Item.SellIn <= 10)
             {
-                item.Quality += 2;
+                Item.Quality += 2;
             }
             else
             {
-                item.Quality++;
+                Item.Quality++;
             }
         }
     }
