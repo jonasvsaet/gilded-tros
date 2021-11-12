@@ -196,5 +196,44 @@ namespace GildedTros.App
             Assert.Equal(0, Items[0].Quality);
         }
 
+        [Fact]
+        //Smelly Item decreases in quality 2* as fast
+        public void SmellyItemDecreaseQualityTest()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Duplicate Code", SellIn = 3, Quality = 6 } };
+            GildedTros app = new GildedTros(Items);
+            app.UpdateQuality();
+            Assert.Equal(4, Items[0].Quality);
+        }
+
+        [Fact]
+        //Smelly Item decreases in quality 2* as fast
+        public void SmellyItemDecreaseQualitySellin0Test()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Duplicate Code", SellIn = 0, Quality = 6 } };
+            GildedTros app = new GildedTros(Items);
+            app.UpdateQuality();
+            Assert.Equal(2, Items[0].Quality);
+        }
+
+        [Fact]
+        //Smelly Item decreases in quality 2* as fast
+        public void SmellyItemDecreaseQualitySellinNegativeTest()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Duplicate Code", SellIn = -1, Quality = 6 } };
+            GildedTros app = new GildedTros(Items);
+            app.UpdateQuality();
+            Assert.Equal(2, Items[0].Quality);
+        }
+
+        [Fact]
+        public void SmellyItemClampQuality()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Duplicate Code", SellIn = -1, Quality = 0 } };
+            GildedTros app = new GildedTros(Items);
+            app.UpdateQuality();
+            Assert.Equal(0, Items[0].Quality);
+        }
+
     }
 }
