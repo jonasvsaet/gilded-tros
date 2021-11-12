@@ -106,13 +106,13 @@ namespace GildedTros.App
         }
 
         [Fact]
-        //Legendary items don't change in quality
+        //Legendary always have quality 80
         public void LegendaryQualityZeroSellInTest()
         {
             IList<Item> Items = new List<Item> { new Item { Name = "B-DAWG Keychain", SellIn = -1, Quality = 50 } };
             GildedTros app = new GildedTros(Items);
             app.UpdateQuality();
-            Assert.Equal(50, Items[0].Quality);
+            Assert.Equal(80, Items[0].Quality);
         }
 
 

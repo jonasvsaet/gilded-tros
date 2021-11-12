@@ -14,6 +14,15 @@ namespace GildedTros.App
         {
             foreach (var item in Items)
             {
+                var innItem = InnItemFactory.GetInnItemForItem(item);
+                innItem.UpdateItem();
+
+                item.SellIn--;
+                ClampQuality(item);
+            }
+            /*
+            foreach (var item in Items)
+            {
                 if (item.Name == "B-DAWG Keychain")
                     continue;
 
@@ -86,7 +95,7 @@ namespace GildedTros.App
 
                 item.SellIn--;
                 ClampQuality(item);
-            }
+            }*/
         }
 
         private void ClampQuality(Item item)
